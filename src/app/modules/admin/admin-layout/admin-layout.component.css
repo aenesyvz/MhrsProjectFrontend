@@ -1,0 +1,72 @@
+.container {
+    margin-inline: 1.5rem;
+}
+
+.main {
+    padding-top: 5rem;
+    overflow-x: hidden;
+}
+
+
+@media screen and (max-width: 567px) {
+    .main {
+        padding-left: 120px;
+        padding-top: 3rem;
+        transition: padding .4s;
+    }
+
+    .show-sidebar.main {
+        padding-left: 120px;
+    }
+}
+
+@media screen and (min-width: 568px) {
+    .main {
+        padding-left: 150px;
+        padding-top: 3rem;
+        transition: padding .4s;
+    }
+
+    .show-sidebar.main {
+        padding-left: 120px;
+    }
+}
+
+
+@media screen and (min-width: 767px) {
+    .main {
+        padding-left: 180px;
+        padding-top: 3rem;
+        transition: padding .4s;
+    }
+
+    .show-sidebar.main {
+        padding-left: 120px;
+    }
+}
+
+
+@media screen and (min-width: 967px) {
+    .main {
+        padding-left: 180px;
+        padding-top: 3rem;
+        transition: padding .4s;
+    }
+
+    .show-sidebar.main {
+        padding-left: 120px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .main {
+        padding-left: 300px;
+        padding-top: 3rem;
+        transition: padding .4s;
+    }
+
+    .show-sidebar.main {
+        padding-left: 120px;
+    }
+
+}

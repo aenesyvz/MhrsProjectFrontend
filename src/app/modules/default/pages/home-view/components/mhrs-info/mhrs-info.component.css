@@ -1,0 +1,39 @@
+.mhrs-infos {
+    padding-block: 4rem;
+    margin-inline: 1.5rem;
+}
+
+.mhrs__infos__content {
+    display: grid;
+    justify-content: center;
+    row-gap: 3rem;
+
+}
+
+.info__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    row-gap: 1rem;
+}
+
+.info__img {
+    width: 130px;
+    height: 130px;
+    row-gap: .5rem;
+}
+
+@media screen and (min-width:767px) {
+    .mhrs__infos__content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width:967px) {
+    .mhrs__infos__content {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 2rem;
+    }
+}

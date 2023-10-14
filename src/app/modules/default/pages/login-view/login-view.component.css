@@ -1,0 +1,123 @@
+.login__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: whitesmoke;
+}
+
+
+
+.login__cover {
+    height: 100vh;
+}
+
+
+.login__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+.login__content {
+    margin-top: 1.5rem;
+    margin-inline: 1.5rem;
+
+}
+
+.login__content-header {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.circle__logo {
+    width: 100px;
+    height: 100px;
+}
+
+.other__logo {
+    width: 270px;
+    height: 70px;
+}
+
+.login__form {
+    margin-top: 6rem;
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* height: 100vh; */
+    /* max-height: calc(100vh - 340px); */
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+    padding-inline: 5rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.button__group {
+    display: grid;
+    row-gap: 1rem;
+}
+
+.button {
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    padding: .5rem;
+}
+
+.login__btn {
+    background-color: green;
+    color: white;
+}
+
+.login-with-edevlet__btn {
+    background-color: rgb(185, 2, 2);
+    color: white;
+}
+
+.register__btn {
+    background-color: rgb(0, 170, 255);
+    color: white;
+}
+
+.login__footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.login__footer span {
+    color: rgb(0, 170, 255);
+    font-weight: 700;
+}
+
+@media screen and (max-width:567px) {
+    .languages-dropdown {
+        display: none;
+    }
+}
+
+@media screen and (max-width:967px) {
+    .login__container {
+        grid-template-columns: initial;
+        min-height: 100vh;
+    }
+
+    .login__cover {
+        display: none;
+    }
+
+
+
+
+
+}

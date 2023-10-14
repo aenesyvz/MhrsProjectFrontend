@@ -1,0 +1,48 @@
+<section class="add__hospital section">
+    <div class="add__hospital__container container grid">
+        <app-table-header title="Yeni Hastane Ekle"></app-table-header>
+        <form [formGroup]="addForm" class="form">
+            <div class="row__group">
+                <app-admin-form-input [showError]="showError"
+                    [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                    [control]="$any(addForm.controls['name'])" inputId="name" placeholder="Lütfen Hastane Adını Giriniz"
+                    label="Hastane Adı">
+                </app-admin-form-input>
+                <app-admin-form-select [showError]="showError" [items]="classList"
+                    [errorMessage]="validationSchema.errorMessageForSelectGlobalRequired"
+                    [control]="$any(addForm.controls['class'])" inputId="class"
+                    placeholder="Lütfen Hastane Sınıfını Giriniz" label="Hastane Sınıfı">
+                </app-admin-form-select>
+            </div>
+            <div class="row__group">
+                <app-admin-form-input [showError]="showError"
+                    [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                    [control]="$any(addForm.controls['latitude'])" inputId="latitude" placeholder="Salla"
+                    label="Latitude Değeri">
+                </app-admin-form-input>
+                <app-admin-form-input [showError]="showError"
+                    [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                    [control]="$any(addForm.controls['longitude'])" inputId="longitude" placeholder="Salla"
+                    label="Longitude Değeri">
+                </app-admin-form-input>
+            </div>
+            <div class="row__group">
+                <app-admin-form-select [showError]="showError"
+                    [errorMessage]="validationSchema.errorMessageForSelectGlobalRequired" [items]="cityList"
+                    [control]="$any(addForm.controls['cityId'])" inputId="cityId" placeholder="Lütfen İl Seçiniz"
+                    label="İl">
+                </app-admin-form-select>
+                <app-admin-form-select [showError]="showError"
+                    [errorMessage]="validationSchema.errorMessageForSelectGlobalRequired" [items]="districtList"
+                    [control]="$any(addForm.controls['districtId'])" inputId="districtId"
+                    placeholder="Lütfen İlçe Seçiniz" label="İlçe">
+                </app-admin-form-select>
+            </div>
+            <app-admin-form-text-area [showError]="showError"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(addForm.controls['address'])" inputId="address" [rows]="4"
+                placeholder="Lütfen Hastanenin Adresini Giriniz" label="Hastane Adresi"></app-admin-form-text-area>
+            <button class="add" (click)="add()">Ekle</button>
+        </form>
+    </div>
+</section>

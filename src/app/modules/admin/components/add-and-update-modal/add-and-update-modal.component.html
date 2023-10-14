@@ -1,0 +1,17 @@
+<div class="modal__overlay">
+    <div class="modal__close" (click)="closeModal()">
+        <div class="modal__close-x x-line-1"></div>
+        <div class="modal__close-x x-line-2"></div>
+    </div>
+    <div class="modal__content">
+        <div class="modal__data">
+            <div class="modal__data-title">{{title}}</div>
+        </div>
+        <div class="form__group">
+            <ng-content></ng-content>
+        </div>
+
+
+        <button class="modal__button" (click)="runOperation()">{{buttonText}}</button>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<section class="medicines section">
+    <app-table-header title="İlaç Güncelle"></app-table-header>
+    <br /><br />
+    <div class="form">
+        <div>
+            <form [formGroup]="imageForm" class="form__content-1">
+                <div class="prev__img">
+                    <img [src]="previewImage()" class="selected__image">
+                    <div class="overlay" *ngIf="selectedImage || imageUrl">
+                        <i class="ri-delete-bin-fill" (click)="deleteImage()"></i>
+                    </div>
+                </div>
+                <button (click)="selectFile.click()" class="load__img">Fotoğraf Seç</button>
+                <input #selectFile type="file" style="display: none;" (change)="onFileSelected($event);"
+                    formControlName="selectedImage" />
+            </form>
+
+        </div>
+
+        <form [formGroup]="updateForm" class="form__content-2">
+            <div class="row__group">
+                <app-admin-form-select [showError]="showError" [items]="medicineCompanyList"
+                    [errorMessage]="validationSchema.errorMessageForSelectGlobalRequired"
+                    [control]="$any(updateForm.controls['medicineCompanyId'])" inputId="companyId"
+                    placeholder="Lütfen Şirket Adını Giriniz" label="Şirket">
+
+                </app-admin-form-select>
+                <app-admin-form-input [showError]="showError"
+                    [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                    [control]="$any(updateForm.controls['name'])" inputId="name"
+                    placeholder="Lütfen Şirket Email Adresini Giriniz" label="İlaç Adı">
+
+                </app-admin-form-input>
+            </div>
+
+            <app-admin-form-text-area [showError]="showError" [rows]="10"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(updateForm.controls['purposeOfUsage'])" inputId="purposeOfUsage"
+                placeholder="Lütfen İlacın Kullanım Amaçlarını Giriniz" label="Kullanım Amacı">
+            </app-admin-form-text-area>
+            <app-admin-form-text-area [showError]="showError" [rows]="10"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(updateForm.controls['sideEffects'])" inputId="sideEffects"
+                placeholder="Lütfen İlacın Yan Etkilerini Giriniz" label="Yan Etkiler">
+            </app-admin-form-text-area>
+            <app-admin-form-text-area [rows]="10" [showError]="showError"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(updateForm.controls['conditionsToBeConsidired'])" inputId="conditionsToBeConsidired"
+                placeholder="Lütfen İlacı Kullanırken Dikkat Edilmesi Gereken Durumları Giriniz"
+                label="Dikkat Edilmesi Gerekenler">
+
+            </app-admin-form-text-area>
+            <app-admin-form-text-area [rows]="10" [showError]="showError"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(updateForm.controls['termsOfUse'])" inputId="termsOfUse"
+                placeholder="Lütfen Vergi Numarasını Giriniz" label="Kullanım Koşulları">
+            </app-admin-form-text-area>
+            <button class="add__btn" (click)="add()">Güncelle</button>
+        </form>
+
+
+
+    </div>
+</section>

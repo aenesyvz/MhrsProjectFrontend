@@ -1,0 +1,52 @@
+<section class="polyclinics section">
+    <div class="polyclinics__container container grid">
+        <app-table-header title="Polikilinikler"></app-table-header>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Polikilinik Adı</th>
+                    <th>işlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of polyclinicsList;index as i">
+                    <th scope="row">{{pageIndex * pageSize + i+1}}</th>
+                    <td>{{item.name}}</td>
+                    <td class="btns">
+                        <button type="button" class="btn update" (click)="openUpdateModal(item)">Güncelle</button>
+                        <button type="button" class="btn delete" (click)="openDeleteModal(item)">Sil</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn add" (click)="openAddModal()">Ekle</button>
+    </div>
+</section>
+
+<app-add-and-update-modal *ngIf="isAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
+    title="Polikilinik Ekle" buttonText="Ekle">
+    <form class="form" [formGroup]="addForm">
+        <div class="input__group">
+            <label for="" class="label" formControlName="name" [ngModel]="name">Adı</label>
+            <input type="text" class="input">
+        </div>
+    </form>
+
+</app-add-and-update-modal>
+
+<app-add-and-update-modal *ngIf="isUpdateModal" (modalClosed)="closeUpdateModal()" (operation)="update()"
+    title="Polikilinik Güncelle" buttonText="Güncelle">
+    <form class="form" [formGroup]="updateForm">
+        <div class="input__group">
+            <label for="" class="label">Adı</label>
+            <input type="text" class="input" formControlName="name" [ngModel]="polyclinic.name">
+        </div>
+    </form>
+</app-add-and-update-modal>
+
+
+<app-delete-modal *ngIf="isDeleteModal" (operation)="delete(polyclinic.id)" (modalClosed)="closeDeleteModal()"
+    buttonText="Sil"
+    [message]="polyclinic.name + ' Polikiliniğini silmek istediğinizden emin misiniz?'"></app-delete-modal>

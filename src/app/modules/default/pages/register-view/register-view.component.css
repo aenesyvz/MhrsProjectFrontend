@@ -1,0 +1,248 @@
+.login__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: whitesmoke;
+}
+
+
+
+.login__cover {
+    height: 100vh;
+}
+
+
+.login__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+.login__content {
+    margin-block: 1.5rem;
+    margin-inline: 1.5rem;
+}
+
+.login__content-header {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.circle__logo {
+    width: 100px;
+    height: 100px;
+}
+
+.other__logo {
+    width: 270px;
+    height: 70px;
+}
+
+.login__form {
+    /* flex-grow: 1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh;
+    max-height: calc(100vh - 340px); */
+
+    padding-inline: 10rem;
+}
+
+.form {
+    width: 50%;
+    display: grid;
+    gap: 1.5rem;
+    transition: margin-left 0.3s ease;
+    height: fit-content;
+
+
+}
+
+.button__group {
+    display: grid;
+    row-gap: 1rem;
+}
+
+.button {
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    padding: .5rem;
+}
+
+.login__btn {
+    background-color: green;
+    color: white;
+}
+
+.login-with-edevlet__btn {
+    background-color: rgb(185, 2, 2);
+    color: white;
+}
+
+.register__btn {
+    background-color: rgb(0, 170, 255);
+    color: white;
+}
+
+.login__footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.login__footer span {
+    color: rgb(0, 170, 255);
+    font-weight: 700;
+}
+
+.form__data {
+    display: grid;
+    row-gap: 1rem;
+    align-self: self-start;
+    margin-bottom: 2rem;
+}
+
+.form__title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.form__description {
+    color: gray;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+
+
+.privacy__politic {
+    display: inline-flex;
+    justify-content: center;
+    align-items: start;
+    column-gap: .5rem;
+}
+
+.privacy__politic p span {
+    color: rgb(0, 255, 170);
+    font-weight: bold;
+}
+
+.privacy__politic input {
+    margin-top: .15rem;
+}
+
+
+
+@media screen and (max-width:567px) {
+    .languages-dropdown {
+        display: none;
+    }
+
+    .login__form {
+        padding-inline: 0;
+    }
+}
+
+@media screen and (max-width:967px) {
+    .login__container {
+        grid-template-columns: initial;
+        min-height: 100vh;
+    }
+
+    .login__cover {
+        display: none;
+    }
+}
+
+input[type=checkbox] {
+    position: relative;
+    border: 2px solid rgb(0, 255, 149);
+    border-radius: 2px;
+    background: none;
+    cursor: pointer;
+    line-height: 0;
+    margin: 0 0 0;
+    outline: 0;
+    padding: 0 !important;
+    vertical-align: text-top;
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    display: inline-block;
+    opacity: .5;
+}
+
+input[type=checkbox]:hover {
+    opacity: 1;
+}
+
+input[type=checkbox]:checked {
+    background-color: rgb(0, 255, 149);
+    opacity: 1;
+}
+
+input[type=checkbox]:before {
+    content: '';
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    width: 4px;
+    height: 10px;
+    border: solid #FFF;
+    border-width: 0 2px 2px 0;
+    margin: -1px -1px 0 -1px;
+    transform: rotate(45deg) translate(-50%, -50%);
+    z-index: 2;
+}
+
+.form__outer {
+    overflow: hidden;
+}
+
+.form__group {
+    width: 200%;
+    display: flex;
+    transition: margin-left 0.3s ease-in-out;
+
+}
+
+.modal__data {
+    display: grid;
+    gap: 1rem;
+    text-align: left;
+    line-height: 1.15rem;
+}
+
+.modal__title {
+    padding-inline: 1rem;
+    border-bottom: .01rem solid rgba(156, 155, 155, 0.968);
+    padding-bottom: 1rem;
+}
+
+.modal__content {
+    padding-inline: 1rem;
+}
+
+.modal__content span {
+    font-weight: bold;
+
+}
+
+.modal__btn {
+    margin-top: 1rem;
+    display: flex;
+    border: none;
+    outline: none;
+    background-color: hsl(190, 64%, 22%);
+    margin-left: auto;
+    margin-right: 1rem;
+    color: white;
+    border-radius: 1rem;
+    padding: .5rem .25rem;
+}

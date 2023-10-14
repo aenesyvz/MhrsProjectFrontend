@@ -1,0 +1,27 @@
+<section class="social-medias-and_illumination-text section">
+    <div class="smait__container container grid">
+
+        <div class="section__content">
+            <div class="social__media_content">
+                <a href="https://twitter.com/MHRS_182" target="_blank">
+                    <img src="/assets/images/twitterYeni.svg" alt="" class="social__media__item">
+                </a>
+
+                <a href="https://www.facebook.com/MerkeziHekimRandevuSistemi/" target="_blank">
+                    <img src="/assets/images/facebookYeni.svg" alt="" class="social__media__item">
+                </a>
+                <a href="https://www.instagram.com/mhrs_182/" target="_blank">
+                    <img src="/assets/images/instagramYeni.svg" alt="" class="social__media__item">
+                </a>
+
+            </div>
+
+            <div class="illumination__text__content" (click)="openModal()">
+                <img src="https://mhrs.gov.tr/img/svg/aydinlatma-metni.svg" class="illumination__text__img" alt="">
+                <h5 class="text__title">Aydınlatma Metni</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-illumination-text-modal *ngIf="isShowModal" (closeModal)="closeModal()"></app-illumination-text-modal>

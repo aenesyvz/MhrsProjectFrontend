@@ -1,0 +1,48 @@
+.input__group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+
+.input {
+    border-radius: .5rem;
+    border: .5px solid grey;
+    padding: .3rem;
+    padding-left: 2rem;
+    outline: none;
+    width: 100%;
+}
+
+.input:hover {
+    border-color: rgb(0, 166, 255);
+}
+
+.errorMessages {
+    position: absolute;
+    top: 1.75rem;
+    left: .25rem;
+    color: red;
+}
+
+.input__content {
+    position: relative;
+}
+
+.error__input {
+    border-color: red;
+}
+
+.input__icon {
+    position: absolute;
+    left: .5rem;
+    top: .2rem;
+    bottom: 0;
+    color: grey;
+}
+
+::placeholder {
+    color: grey;
+}

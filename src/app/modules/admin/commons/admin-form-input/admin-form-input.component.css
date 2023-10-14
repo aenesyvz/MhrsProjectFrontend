@@ -1,0 +1,46 @@
+.input__group {
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    padding: .15rem .4rem;
+    background-color: white;
+    top: -.75rem;
+    left: .7rem;
+    color: hsl(190, 64%, 22%);
+    z-index: 10;
+}
+
+
+.input {
+    outline: none;
+    border: 1px solid hsl(190, 64%, 22%);
+    border-radius: 1rem;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    width: 100%;
+}
+
+.error__messages {
+    position: absolute;
+    top: 2rem;
+    left: .25rem;
+    color: red;
+}
+
+.input__content {
+    position: relative;
+}
+
+.error__input {
+    border-color: red;
+}
+
+.input__icon {
+    position: absolute;
+    left: .5rem;
+    top: .2rem;
+    bottom: 0;
+    color: grey;
+}

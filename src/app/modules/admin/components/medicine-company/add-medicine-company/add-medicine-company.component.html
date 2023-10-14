@@ -1,0 +1,60 @@
+<section class="add-medicine-company section">
+    <app-table-header title="Yeni İlaç Şirketi Ekle"></app-table-header>
+    <br /><br />
+    <form [formGroup]="addForm" class="form">
+        <div class="form__content content__group-1">
+            <div class="prev__img">
+                <p *ngIf="!selectedImage" style="text-align: center;">Sürükleyerek Fotoğrafta Seçebilirsin</p>
+
+                <img [src]="selectedImage" class="selected__image" *ngIf="selectedImage">
+                <div class="overlay" *ngIf="selectedImage">
+                    <i class="ri-delete-bin-fill" (click)="deleteImage()"></i>
+                </div>
+            </div>
+            <button (click)="selectFile.click()" class="load__img">Fotoğraf Seç</button>
+            <input #selectFile type="file" style="display: none;" (change)="onFileSelected($event);"
+                formControlName="selectedImage" />
+        </div>
+        <div class="form__content content__group-2">
+            <app-admin-form-input [showError]="showError"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(addForm.controls['name'])" inputId="email" placeholder="Lütfen Şirket Adını Giriniz"
+                label="Şirket Adı">
+
+            </app-admin-form-input>
+            <app-admin-form-input [showError]="showError" [errorMessage]="validationSchema.errorMessageForEmail"
+                [control]="$any(addForm.controls['email'])" inputId="email"
+                placeholder="Lütfen Şirket Email Adresini Giriniz" label="Şirket Email">
+
+            </app-admin-form-input>
+            <app-admin-form-input [showError]="showError"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(addForm.controls['address'])" inputId="email" placeholder="Lütfen Şirket Adresi Giriniz"
+                label="Şirket Adresi">
+
+            </app-admin-form-input>
+            <app-admin-form-input [showError]="showError"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [errorMessage]="validationSchema.errorMessageForPhoneNumber"
+                [control]="$any(addForm.controls['phoneNumber'])" inputId="phoneNumber" placeholder="(XXX) XXX XX XX"
+                label="Telefon Numarası">
+
+            </app-admin-form-input>
+            <app-admin-form-input [showError]="showError"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(addForm.controls['taxOffice'])" inputId="taxOffice"
+                placeholder="Lütfen Vergi Dairesini Giriniz" label="Vergi Dairesi">
+
+            </app-admin-form-input>
+            <app-admin-form-input [showError]="showError"
+                [errorMessage]="validationSchema.errorMessageForGlobalRequired"
+                [control]="$any(addForm.controls['taxNumber'])" inputId="taxNumber"
+                placeholder="Lütfen Vergi Numarasını Giriniz" label="Vergi Numarası">
+            </app-admin-form-input>
+            <button class="add__btn" (click)="add()">Ekle</button>
+        </div>
+
+
+    </form>
+
+</section>

@@ -1,0 +1,29 @@
+<section class="medicine section">
+    <div class="medicine__container container grid">
+        <app-table-header title="Tüm İlaçlar"></app-table-header>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Şirket Adı</th>
+                    <th>İlaç Adı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of medicineList;index as i">
+                    <td>{{pageIndex * pageSize + i+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.medicineCompanyId}}</td>
+
+                    <td class="btns">
+                        <button type="button" class="btn update"
+                            [routerLink]="['/Admin/MedicineCompanies/Update']">Güncelle</button>
+                        <button type="button" class="btn delete">Sil</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn add">Ekle</button>
+    </div>
+</section>

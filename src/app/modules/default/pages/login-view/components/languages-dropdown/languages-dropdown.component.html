@@ -1,0 +1,16 @@
+<div class="languages__dropdown">
+    <div class="select__language" (click)="openDropdownMenu();">
+        <div class="language__info">
+            <img [src]="selectLanguage.flagUrl" alt="" class="language__flag">
+            <div class="language__name">{{selectLanguage.name}}</div>
+        </div>
+        <i *ngIf="isOpenDropdownMenu" class="ri-arrow-up-s-line arrow"></i>
+        <i *ngIf="!isOpenDropdownMenu" class="ri-arrow-down-s-line arrow"></i>
+    </div>
+    <div *ngIf="isOpenDropdownMenu" class="dropdow__menu">
+        <div *ngFor="let language of languages" class="language__info" (click)="changeLanguage(language)">
+            <img [src]="language.flagUrl" alt="" class="language__flag">
+            <div class="language__name">{{language.name}}</div>
+        </div>
+    </div>
+</div>

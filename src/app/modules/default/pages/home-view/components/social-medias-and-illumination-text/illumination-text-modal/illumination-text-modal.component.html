@@ -1,0 +1,124 @@
+<div class="modal__content" (click)="modalClose()">
+    <div class="modal__data" (click)="onModalClick($event)">
+        <div class="modal__header">
+            <h4 class="modal__title">
+                {{title}}
+            </h4>
+        </div>
+        <div class="modal__body">
+            <div class="modal__body-group">
+                <h5 class="modal__body-title">
+                    Aydınlatma Metni
+                </h5>
+                <p class="modal__body-description">
+                    Bu Aydınlatma Metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu’nun (“KVK Kanunu”) “Veri
+                    Sorumlusunun Aydınlatma Yükümlülüğü” kenar başlıklı 10 uncu maddesi uyarınca ve KVK Kanunu
+                    kapsamında
+                    veri sorumlusu olan T.C. Sağlık Bakanlığı (Bakanlık) tarafından, Merkezi Hekim Randevu Sistemi Çağrı
+                    Merkezi (MHRS) kullanıcılarına, kullanıcılara ait kişisel veriler hususunda bilgilendirme yapmak
+                    amacıyla hazırlanmıştır. KVK Kanunu uyarınca veri sorumlusu sıfatını haiz Bakanlığın merkez adresi
+                    “Bilkent Yerleşkesi, Üniversiteler Mah. Dumlupınar Bulvarı 6001. Cad. No:9 Çankaya/Ankara 06800”dir.
+                </p>
+            </div>
+
+            <div class="modal__body-group">
+                <h5 class="modal__body-title">
+                    Veri Sorumlusunun Kimliği
+                </h5>
+                <p class="modal__body-description">
+                    Bu sistemde işlenen kişisel verileriniz bakımından veri sorumlusu T.C. Sağlık Bakanlığı’dır.
+                </p>
+            </div>
+
+            <div class="modal__body-group">
+                <h5 class="modal__body-title">
+                    Kişisel Verilerin İşlenme Amaçları
+                </h5>
+                <p class="modal__body-description">
+                    Bu sistemde aşağıda yer alan kişisel verileriniz şu amaçlarla işlenmektedir.
+
+                    - Kimlik verisi: MHRS’de T.C. Kimlik Numarası, adı, soyadı, baba adı, anne adı doğum yeri, doğum
+                    tarihi, yaş ve cinsiyet bilgileriniz, kimliğinizin doğrulanması ve alabileceğiniz randevuların
+                    belirlenebilmesi amacıyla işlenmektedir.
+
+                    - İletişim verisi: MHRS’de sabit telefon numarası, cep telefonu numarası veya e-Posta adresi
+                    bilgileriniz üyelik aşamasında randevu hizmetlerinin sürdürülebilmesi için sizinle SMS yoluyla,
+                    canlı operatör, robotik arama bilgilendirme yöntemleri ile iletişime geçilebilmesi ve MHRS Mobil
+                    veya web üyeliğiniz yok ise çağrı merkezi tarafından almış olduğunuz randevu bilgilerinizin size
+                    iletilmesi, herhangi bir randevu değişikliği olduğunda size bilgi ve hatırlatma yapılabilmesi
+                    amaçlarıyla işlenmektedir. Almış olduğumuz telefon bilgileri üzerinden sizinle iletişime geçme
+                    yöntemimiz için web veya mobil üyelikleriniz üzerinden kendi tercihinizi belirleme hakkına
+                    sahipsiniz.
+
+                    - Görsel ve işitsel veri: Ses kaydı kişisel veriniz çağrı merkezi üzerinden yapılan işlemlerde
+                    alınmakta olup, randevu hizmeti alan ve veren kişilerin işlem güvenliğinin yürütülmesi amacıyla
+                    işlenmektedir.
+
+                    - Sağlık verisi: MHRS’ de almış veya iptal etmiş olduğunuz muayene randevu tarihi ve saati, randevu
+                    alınan hastane/kurum/klinik/ hekim, özellikli hasta kodu, hasta randevu numarası, engel durumu,
+                    almış veya iptal etmiş olduğunuz aşı tarihi ve saati, aşı randevu numarası bilgileriniz iş
+                    sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, aşı randevu süreçlerinin yürütülmesi,
+                    vatandaş bildirim süreçlerinin (SMS,Push,e-Posta vb.) yürütülmesi amacıyla işlenmektedir. Aşı
+                    hakkınızın olup olmadığı, kaçıncı doz aşı randevusu alabileceğiniz, evde aşı yaptırma hakkınızın
+                    olup olmadığı, hangi tür aşıyı yaptırma hakkınızın olduğu bilgileriniz ise anlık olarak
+                    kullanılmakta, kayıt altına alınmamaktadır.
+
+                    - 2011 yılında, MHRS Web Portal da hizmete dahil edilerek internetten randevu alma süreci de
+                    başladı. 2012 yılında, MHRS İstanbul ilinin de dahil edilmesiyle birlikte tüm Türkiye kapsamında
+                    hizmet vermeye başladı.
+                </p>
+            </div>
+
+
+            <div class="modal__body-group">
+                <h5 class="modal__body-title">
+                    Kişisel Verilerin Aktarımı
+                </h5>
+                <p class="modal__body-description">
+                    Merkezi Hekim Randevu Sistemi’ndeki kişisel verileriniz KVK Kanunu’nun 28 inci maddesinin ilk
+                    fıkrasında yer alan muafiyet halleri saklı kalmak üzere, hiçbir şekilde üçüncü taraflarla
+                    paylaşılmamaktadır.
+                </p>
+            </div>
+
+
+
+            <div class="modal__body-group">
+                <h5 class="modal__body-title">
+                    Kişisel Veri Toplamanın Yöntemi ve Hukuki Sebebi
+                </h5>
+                <p class="modal__body-description">
+                    Kişisel verileriniz tamamen otomatik yollarla (bu sistem aracılığı ile) elde edilmekte olup kişisel
+                    verilerinizin işlenmesinin hukuki dayanağı, KVK Kanunu’nun 5 inci maddesinin ikinci fıkrasının (ç)
+                    bendi uyarınca veri sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi için zorunlu olması ve
+                    (f) ilgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla, veri sorumlusunun meşru
+                    menfaatleri için veri işlenmesinin zorunlu olması ile 6 ncı maddesinin üçüncü fıkrası uyarınca; kamu
+                    sağlığının korunması, koruyucu hekimlik, tıbbî teşhis; tedavi ve bakım hizmetlerinin yürütülmesi,
+                    sağlık hizmetleri ile finansmanının planlanması ve yönetimi amacıyla, sır saklama yükümlülüğü
+                    altında bulunan kişiler veya yetkili kişiler veya yetkili kurum ve kuruluşlar tarafından işlenmesi
+                    hukuki sebebine dayanarak işlenmektedir.
+                </p>
+            </div>
+
+
+            <div class="modal__body-group">
+                <h5 class="modal__body-title">
+                    İlgili Kişilerin Hakları ve Veri Sorumlusuna Başvuru
+                </h5>
+                <p class="modal__body-description">
+                    Merkezi Hekim Randevu Sistemi Kullanıcıları KVK Kanunu’nun 11 inci maddesinde düzenlenen haklarını,
+                    KVK Kanunu’nun 13 üncü maddesi ve Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ
+                    hükümleri çerçevesinde Bakanlığa başvurmak suretiyle kullanabilir. KVK Kanunu’nun 13 üncü maddesi
+                    uyarınca yapılacak yazılı başvurular "T.C. Sağlık Bakanlığı, Üniversiteler Mahallesi, 6001. Cadde,
+                    No:9, Çankaya, Ankara" adresine; Kayıtlı Elektronik Posta (KEP) ile yapılacak başvurular ise
+                    "sb@hs01.kep.tr" adresine iletilmelidir.
+                </p>
+            </div>
+
+
+            <button class="read__button" (click)="modalClose()">OKUDUM</button>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="input__group">
+    <label *ngIf="label">{{label}}</label>
+    <div class="input__content">
+        <select class="input" [id]="inputId" [formControl]="control" type="text"
+            [ngClass]="{'error__input':displayErrors() && control.errors}">
+            <option value="-1">Seçiniz</option>
+            <option *ngFor="let item of items" [value]="item.value">{{item.key}}</option>
+
+        </select>
+        <i class=" input__icon" [ngClass]="icon"></i>
+    </div>
+
+
+    <div class="errorMessages" *ngIf="displayErrors()">
+        <div *ngFor="let error of control.errors | keyvalue" class="control__error">
+            {{errorMessage[error.key]}}
+        </div>
+    </div>
+</div>

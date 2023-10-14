@@ -1,0 +1,48 @@
+.announcements {
+    background-color: rgb(228, 247, 241);
+
+}
+
+.announcements__content {
+    display: grid;
+    row-gap: 1rem;
+
+    padding-inline: 4rem;
+    padding-block: 2rem;
+}
+
+.section__title {
+    color: rgb(101, 128, 119);
+    font-size: 36px;
+}
+
+.announcement__list {
+    display: grid;
+    gap: 1.5rem;
+
+}
+
+.announcement_item {
+    background-color: rgb(201, 242, 228);
+    padding-left: .5rem;
+    padding-block: .75rem;
+    border-radius: .5rem;
+    color: rgb(23, 86, 66);
+    transition: background .3s;
+}
+
+.announcement_item:hover {
+    background-color: rgb(74, 166, 128);
+}
+
+@media screen and (min-width:767px) {
+    .announcement__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width:967px) {
+    .announcement__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

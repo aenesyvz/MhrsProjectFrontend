@@ -1,0 +1,5 @@
+<app-sidebar-menu (toggle)="toggleSidebar()" [isSidebarVisible]="isSidebarVisible"></app-sidebar-menu>
+
+<main class="main  container" [ngClass]="{'show-sidebar': isSidebarVisible}" id="main">
+    <router-outlet></router-outlet>
+</main>

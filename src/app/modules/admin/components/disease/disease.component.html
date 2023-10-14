@@ -1,0 +1,60 @@
+<section class="disease section">
+    <div class="disease__container container grid">
+        <app-table-header title="Tüm Hastalıklar"></app-table-header>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Polikinik Name</th>
+                    <th>Hastalık Adı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of diseaseList;index as i">
+                    <th>{{i + 1}}</th>
+                    <td>{{item.polyclinicName}}</td>
+                    <td>{{item.name}}</td>
+                    <td class="btns">
+                        <button type="button" class="btn update" (click)="openUpdateModal(item)">Güncelle</button>
+                        <button type="button" class="btn delete">Sil</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn add" (click)="openAddModal()">Ekle</button>
+    </div>
+</section>
+
+<app-add-and-update-modal *ngIf="isOpenAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
+    title="Yeni Hastalık Ekle" buttonText="Ekle">
+    <form class="form" [formGroup]="addForm">
+        <div class="input__group">
+            <label for="" class="label">Polikinik</label>
+            <select name="" id="" class="input" formControlName="polyclinicId" [ngModel]="polyclinicId">
+                <option *ngFor="let polyclinic of polyclinicList" [value]="polyclinic.id">{{polyclinic.name}}</option>
+            </select>
+        </div>
+        <div class="input__group">
+            <label for="" class="label">Hastalık Adı</label>
+            <input type="text" class="input" formControlName="name" [ngModel]="name">
+        </div>
+    </form>
+</app-add-and-update-modal>
+
+
+<app-add-and-update-modal *ngIf="isOpenUpdateModal" title="Hastalık Güncelle" buttonText="Güncelle"
+    (modalClosed)="closeUpdateModal()" (operation)="update()">
+    <form class="form" [formGroup]="updateForm">
+        <div class="input__group">
+            <label for="" class="label">Polikinik</label>
+            <select name="" id="" class="input" formControlName="polyclinicId" [ngModel]="disease.polyclinicId">
+                <option *ngFor="let polyclinic of polyclinicList" [value]="polyclinic.id">{{polyclinic.name}}</option>
+            </select>
+        </div>
+        <div class="input__group">
+            <label for="" class="label">Hastalık Adı</label>
+            <input type="text" class="input" formControlName="name" [ngModel]="disease.name">
+        </div>
+    </form>
+</app-add-and-update-modal>

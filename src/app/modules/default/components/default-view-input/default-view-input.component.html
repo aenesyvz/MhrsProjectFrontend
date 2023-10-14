@@ -1,0 +1,16 @@
+<div class="input__group">
+
+    <label *ngIf="label">{{label}}</label>
+    <div class="input__content">
+        <input class="input" [id]="inputId" [formControl]="control" [type]="type" [placeholder]="placeholder"
+            [ngClass]="{'error__input':control.errors && displayErrors()}" (input)="runChange()" />
+        <i class="input__icon" [ngClass]="icon"></i>
+    </div>
+
+
+    <div class="errorMessages" *ngIf="displayErrors()">
+        <div *ngFor="let error of control.errors | keyvalue" class="control__error">
+            {{errorMessage[error.key]}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<section class="appointment__time section">
+    <div class="appoinment__time__container container grid">
+        <app-table-header title="Randevu Zamanları"></app-table-header>
+        <!-- <div class="section__data">
+            <i class="ri-menu-line"></i>
+            <h3 class="section__title">Randevu Zamanları</h3>
+        </div> -->
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Randevu Zamanı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of appointmentTimeList;index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.hour}}:{{item.minute > 9 ? item.minute : item.minute+"0"}}</td>
+                    <td class="btns">
+                        <button type="button" class="btn update" (click)="openUpdateModal(item)">Güncelle</button>
+                        <button type="button" class="btn delete">Sil</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn add" (click)="openAddModal()">Ekle</button>
+    </div>
+</section>
+
+<app-add-and-update-modal *ngIf="isOpenAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
+    title="Randevu Ekle" buttonText="Ekle">
+    <form [formGroup]="addForm" class="form">
+        <div class="input__group">
+            <label for="" class="label">Saat</label>
+            <input type="text" formControlName="hour" [ngModel]="hour" class="input" min="9" max="17">
+            <span class="error__message"
+                *ngIf="(this.addForm.get('hour')!.touched || this.showError ) && this.addForm.get('hour')!.hasError('required')">
+                Lazım
+            </span>
+        </div>
+        <div class="input__group">
+            <label for="" class="label">Dakika</label>
+            <input type="text" class="input" min="0" max="59" formControlName="minute" [ngModel]="minute">
+            <span class="error__message"
+                *ngIf="(this.addForm.get('minute')!.touched ||this.showError ) && this.addForm.get('minute')!.hasError('required')">
+                Lazım
+            </span>
+            <span class="error__message"
+                *ngIf="(this.addForm.get('minute')!.touched ||this.showError ) && this.addForm.get('minute')!.hasError('numericValidator')">
+                Hatalı
+            </span>
+
+        </div>
+    </form>
+
+</app-add-and-update-modal>
+
+
+<app-add-and-update-modal *ngIf="isOpenUpdateModal" (modalClosed)="closeUpdateModal()" (operation)="update()"
+    title="Randevu Güncelle" buttonText="Güncelle">
+    <form [formGroup]="updateForm" class="form">
+        <div class="input__group">
+            <label for="" class="label">Saat</label>
+            <input type="text" formControlName="hour" class="input" min="9" max="17">
+        </div>
+        <div class="input__group">
+            <label for="" class="label">Dakika</label>
+            <input type="text" class="input" min="0" max="59" formControlName="minute">
+            <span class="error__message"
+                *ngIf="(this.updateForm.get('minute')!.touched ||this.showError ) && this.updateForm.get('minute')!.hasError('required')">
+                Lazım
+            </span>
+            <span class="error__message"
+                *ngIf="(this.updateForm.get('minute')!.touched ||this.showError ) && this.updateForm.get('minute')!.hasError('numericValidator')">
+                Hatalı
+            </span>
+
+        </div>
+
+    </form>
+</app-add-and-update-modal>

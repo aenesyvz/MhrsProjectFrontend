@@ -1,0 +1,46 @@
+.header__btn {
+    border-radius: .5rem;
+    width: 150px;
+    height: 60px;
+    padding: .5rem .25rem;
+    font-size: 1.5rem;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.login__btn {
+    background-color: #78D6C6;
+}
+
+.map__btn {
+    background-color: #C70039;
+}
+
+.map__btn img {
+    width: 30px;
+    height: 30px;
+}
+
+.e-nabiz__btn {
+    background-color: #0F2C59;
+
+}
+
+.e-nabiz__btn img {
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.what_am_i_btn {
+    background-color: #8ECDDD;
+}
+
+.what_am_i_btn img {
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+}

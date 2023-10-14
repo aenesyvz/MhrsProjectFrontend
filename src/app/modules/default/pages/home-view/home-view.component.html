@@ -1,0 +1,11 @@
+<app-home-header [addedHeaderShadow]="shouldShowScrollButton"></app-home-header>
+<app-home-banner></app-home-banner>
+<app-social-medias-and-illumination-text></app-social-medias-and-illumination-text>
+<app-announcements></app-announcements>
+<app-mhrs-info></app-mhrs-info>
+<app-footer></app-footer>
+
+<a href="javascript:void(0);" class="scrollup" id="scroll-up" [ngClass]="{'show-scroll ':shouldShowScrollButton}"
+    (click)="scrollToTop()">
+    <i class="ri-arrow-up-line"></i>
+</a>

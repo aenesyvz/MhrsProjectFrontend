@@ -1,0 +1,61 @@
+<section class="city section">
+    <div class="city__container container grid">
+        <app-table-header title="Tüm İller"></app-table-header>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Plaka Kodu</th>
+                    <th scope="col">Şehir Adı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of cityList;index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.plateCode}}</td>
+                    <td>{{item.name}}</td>
+                    <td class="btns">
+                        <button type="button" class="btn add"
+                            [routerLink]="['/Admin/Districts', item.id]">İlçeler</button>
+
+                        <button type="button" class="btn update" (click)="openUpdateModal(item)">Güncelle</button>
+                        <button type="button" class="btn delete">Sil</button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn add" (click)="openAddModal()">Ekle</button>
+    </div>
+</section>
+
+<app-add-and-update-modal *ngIf="isOpenAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
+    title="Yeni İl Ekle" buttonText="Ekle">
+
+    <form class="form" [formGroup]="addForm">
+        <div class="input__group">
+            <label for="" class="label">Plaka Kodu</label>
+            <input type="text" class="input" formControlName="plateCode" [ngModel]="plateCode">
+        </div>
+        <div class="input__group">
+            <label for="" class="label">Adı</label>
+            <input type="text" class="input" formControlName="name" [ngModel]="name">
+        </div>
+    </form>
+</app-add-and-update-modal>
+
+<app-add-and-update-modal *ngIf="isOpenUpdateModal" (modalClosed)="closeUpdateModal()" (operation)="update()"
+    title="Şehir Güncelle" buttonText="Güncelle">
+    <form class="form" [formGroup]="updateForm">
+        <!-- <app-form-input label="Plaka Kodu" formControlName="plateCode" [ngModel]="city.plateCode"></app-form-input> -->
+        <div class="input__group">
+            <label for="" class="label">Plaka Kodu</label>
+            <input type="text" class="input" formControlName="plateCode" [ngModel]="city.plateCode">
+        </div>
+        <div class="input__group">
+            <label for="" class="label">Adı</label>
+            <input type="text" class="input" formControlName="name" [ngModel]="city.name">
+        </div>
+    </form>
+</app-add-and-update-modal>

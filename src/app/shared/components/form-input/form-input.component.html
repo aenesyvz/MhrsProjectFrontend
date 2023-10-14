@@ -1,0 +1,7 @@
+<div class="input__group">
+    <label for="" class="label">{{label}}</label>
+    <input type="text" class="input" min="0" max="59" [formControlName]="formControlName" [ngModel]="formControlName">
+    <div *ngFor="let contidition of formValidationError">
+        <span *ngIf="contidition.status"> {{contidition.message}}</span>
+    </div>
+</div>

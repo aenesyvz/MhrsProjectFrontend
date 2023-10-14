@@ -1,0 +1,13 @@
+<section class="announcements section">
+    <div class="announcements__content">
+        <div class="section__title"> {{title}}</div>
+
+
+        <div class="announcement__list">
+            <div class="announcement_item" *ngFor="let announcement of announcementList">
+                {{announcement.title | textTruncate:37}}
+            </div>
+        </div>
+    </div>
+
+</section>

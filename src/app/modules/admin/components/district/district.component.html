@@ -1,0 +1,54 @@
+<section class="district section">
+    <div class="district__container container grid">
+        <app-table-header title="İlçeler"></app-table-header>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>İl Adı</th>
+                    <th>İlçe Adı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let item of districtList;index as i">
+                    <td>{{i+1}}</td>
+                    <td>{{item.cityName}}</td>
+                    <td>{{item.name}}</td>
+                    <td class="btns">
+                        <button type="button" class="btn update" (click)="openUpdateModal(item)">Güncelle</button>
+                        <button type="button" class="btn delete">Sil</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn add" (click)="openAddModal()">Ekle</button>
+    </div>
+</section>
+
+<app-add-and-update-modal *ngIf="isOpenAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
+    title="Yeni İlçe Ekle" buttonText="Ekle">
+    <form class="form" [formGroup]="addForm">
+        <div class="input__group">
+            <label for="" class="label">İlçe Adı</label>
+            <input type="text" class="input" formControlName="name" [ngModel]="name">
+        </div>
+    </form>
+</app-add-and-update-modal>
+
+<app-add-and-update-modal *ngIf="isOpenUpdateModal" (modalClosed)="closeUpdateModal()" (operation)="update()"
+    title="Yeni İlçe Güncelle" buttonText="Güncelle">
+    <form class="form" [formGroup]="updateForm">
+        <div class="input__group">
+            <label for="" class="label">İl</label>
+            <select class="input" formControlName="cityId">
+                <option *ngFor="let city of cityList" [value]="city.id">{{city.name}}</option>
+            </select>
+        </div>
+        <div class="input__group">
+            <label for="" class="label">İlçe Adı</label>
+            <input type="text" class="input" formControlName="name">
+        </div>
+    </form>
+</app-add-and-update-modal>

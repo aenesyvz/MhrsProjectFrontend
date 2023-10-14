@@ -1,0 +1,17 @@
+.form {
+    margin-top: 2rem;
+    display: grid;
+    gap: 2rem;
+    width: 70%;
+}
+
+.row__group {
+    display: grid;
+    gap: 2rem;
+}
+
+@media screen and (min-width:967px) {
+    .row__group {
+        grid-template-columns: 1fr 1fr;
+    }
+}

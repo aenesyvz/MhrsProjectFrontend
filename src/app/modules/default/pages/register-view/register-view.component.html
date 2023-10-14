@@ -1,0 +1,142 @@
+<section class="login ">
+    <div class="login__container container grid">
+        <div class="login__content">
+            <div class="login__content-header">
+                <img src="/assets/images/mhrsLogo.png" alt="" class="circle__logo">
+                <img src="/assets/images/mhrsLogo2.svg" alt="" class="other__logo">
+            </div>
+
+            <div class="login__form">
+                <div class="form__data">
+                    <h3 class="form__title">Üye Ol</h3>
+                    <p class="form__description">Tüm alanların doldurulması zorunludur.</p>
+                </div>
+                <div class="form__outer">
+                    <div class="form__group">
+                        <form class="form form1" [formGroup]="registerFormGroup1">
+                            <app-default-view-input [showError]="showError"
+                                [control]="$any(registerFormGroup1.controls['natioanlityId'])" icon="ri-user-fill"
+                                [errorMessage]="validationSchema.errorMessageForNatioanlityId" inputId="natioanlityId"
+                                placeholder="Lütfen T.C Kimlik No Giriniz1"
+                                (input)="inputControl.onInputChangeAcceptLimitedNumeric($event, $any(registerFormGroup1.controls['natioanlityId']))">
+                            </app-default-view-input>
+
+                            <app-default-view-input [showError]="showError"
+                                [errorMessage]="validationSchema.errorMessageForFirstName" icon="ri-lock-2-fill"
+                                [control]="$any(registerFormGroup1.controls['firstName'])" inputId="firstName"
+                                placeholder="İsim"
+                                (input)="inputControl.onInputChangeUppercase($event, $any(registerFormGroup1.controls['firstName']))">
+                            </app-default-view-input>
+
+                            <app-default-view-input [showError]="showError"
+                                [control]="$any(registerFormGroup1.controls['lastName'])" icon="ri-user-fill"
+                                [errorMessage]="validationSchema.errorMessageForLastName" inputId="lastName"
+                                placeholder="Soyad"
+                                (input)="inputControl.onInputChangeUppercase($event, $any(registerFormGroup1.controls['lastName']))">
+                            </app-default-view-input>
+
+                            <app-default-view-select [showError]="showError"
+                                [errorMessage]="validationSchema.errorMessageForGender" [items]="genders"
+                                icon="ri-lock-2-fill" [control]="$any(registerFormGroup1.controls['gender'])"
+                                inputId="gender" placeholder="Cinsiyet">
+                            </app-default-view-select>
+
+                            <app-default-view-input [showError]="showError"
+                                [errorMessage]="validationSchema.errorMessageForDateOfBirth" icon="ri-lock-2-fill"
+                                [control]="$any(registerFormGroup1.controls['dayOfBirth'])" inputId="dayOfBirth"
+                                placeholder="Doğum Tarihi" type="date">
+                            </app-default-view-input>
+
+                            <div class="privacy__politic">
+                                <input type="checkbox" class="checkbox" [checked]="acceptUsageConditition"
+                                    (change)="checkboxChangeHandle()">
+                                <span class="checkmark"></span>
+                                <p><span (click)="openUsageCondititionModal()">Üyelik ve Gizlilik Politikası</span>
+                                    Okudum,kabul ediyorum.</p>
+                            </div>
+
+                            <div class="button__group">
+                                <button class="login__btn button" (click)="nextToFormGroup2()">İleri > </button>
+
+                            </div>
+
+                        </form>
+
+                        <form class="form form2" [formGroup]="registerFormGroup2">
+                            <app-default-view-input [showError]="showError"
+                                [control]="$any(registerFormGroup2.controls['email'])" icon="ri-user-fill"
+                                [errorMessage]="validationSchema.errorMessageForEmail" inputId="email"
+                                placeholder="Email Adresiniz">
+                            </app-default-view-input>
+
+                            <app-default-view-input [showError]="showError"
+                                [errorMessage]="validationSchema.errorMessageForPhoneNumber" icon="ri-lock-2-fill"
+                                [control]="$any(registerFormGroup2.controls['phoneNumber'])" inputId="phoneNumber"
+                                placeholder="İsim"
+                                (input)="inputControl.onInputChangeAcceptLimitedNumeric($event, $any(registerFormGroup2.controls['phoneNumber']))">
+                            </app-default-view-input>
+
+                            <app-default-view-input [showError]="showError"
+                                [control]="$any(registerFormGroup2.controls['password'])" icon="ri-user-fill"
+                                [errorMessage]="validationSchema.errorMessageForPhoneNumber" inputId="password"
+                                placeholder="Şifre">
+                            </app-default-view-input>
+
+                            <app-default-view-input [showError]="showError"
+                                [errorMessage]="validationSchema.errorMessageForPhoneNumber" icon="ri-lock-2-fill"
+                                [control]="$any(registerFormGroup2.controls['confirmPassword'])"
+                                inputId="confirmPassword" placeholder="Şifre Tekrarı" type="password">
+                            </app-default-view-input>
+
+
+
+                            <div class="button__group">
+                                <button class="login__btn button">Kaydol > </button>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="login__cover">
+            <img src="https://static.wixstatic.com/media/8d1167_c80eaaf466ca4302b50a155ece44571c~mv2.png/v1/fill/w_410,h_376,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/MHRS.png"
+                alt="" class="login__img">
+        </div>
+    </div>
+</section>
+
+<app-generic-modal (closeModal)="closeUsageCondititionModal()" *ngIf="openModal">
+    <div class="modal__data">
+        <h3 class="modal__title">Gizlilik Politikası</h3>
+        <div class="modal__content">
+            <span>Merkezi Hekim Randevu Sistemi'ne (MHRS)</span> hoşgeldiniz,
+            Değerli vatandaşımız randevu iptalleri, randevu yeri ve zamanı değişiklikleri ve randevu hatırlatmalarının
+            sizlere yapılabilmesi için sistemde güncel iletişim bilgilerinizin bulunması gerekmektedir. Bu verilerin
+            güncel
+            tutulması ve iletişim bilgilerinin doğrulanması kendi sorumluluğunuzdadır.
+            <br />
+            <br />
+            Parolanızı unutmanız halinde sistemde kayıtlı olan iletişim bilgileriniz üzerinden parola yenileme işlemi
+            yapılmaktadır. Parola yenilemede yeni parolanız en az 8 karakter olmalı ve en az bir büyük harf, bir küçük
+            harf
+            ve bir rakam içermelidir.
+            <br />
+            <br />
+            Bilgi güvenliği kapsamında üyeliğe ilişkin oluşturulan parola, gizli soru-cevap ve resim bilgileri kişiye
+            özel
+            ve gizlidir. Üçüncü şahıslarla paylaşılmamalıdır. Vatandaşın söz konusu gizli bilgileri kullanma hakkı
+            bizzat
+            kendisine aittir. Aykırı kullanımlardan ve paylaşımlardan doğabilecek tüm sorumluluk kendisine aittir.
+            <br /> <br />
+            Siz değerli vatandaşımızın bilgisine sunarız.
+            <br />
+
+            <button class="modal__btn" (click)="acceptUsageConditionModal()">Okudum Onaylıyorum</button>
+        </div>
+    </div>
+</app-generic-modal>
