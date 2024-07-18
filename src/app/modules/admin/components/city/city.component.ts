@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GetListCityDto, UpdateCityDto } from 'src/app/models/DTOs/cityDtos';
 import { CityService } from 'src/app/services/city.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { CustomValidators } from 'src/app/shared/validator/custom-validator';
 
 @Component({
   selector: 'app-city',
@@ -11,7 +13,6 @@ import { CityService } from 'src/app/services/city.service';
 export class CityComponent implements OnInit {
   cityList: GetListCityDto[];
   city: GetListCityDto;
-  title: string;
 
   addForm: FormGroup;
   updateForm: FormGroup;
@@ -24,8 +25,21 @@ export class CityComponent implements OnInit {
 
   showError: boolean = false;
 
+  plateCodeValidationSchema: Record<string, string> = {
+    required: "Lütfen ilin plaka kodunu giriniz",
+    min: "Plaka kodu en az 01 olmalıdır",
+    max: "Plaka kodu en fazla 81 olmalıdır",
+    numericValidator: "Lütfen sayı giriniz",
+  }
+
+  cityNameValidationSchema: Record<string, string> = {
+    required: "Lütfen ilin plaka kodunu giriniz",
+    minlength: "En az 3 karakter olmalıdır"
+  }
+
   constructor(
-    private cityService: CityService
+    private cityService: CityService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +49,8 @@ export class CityComponent implements OnInit {
   getList() {
     this.cityService.getList().subscribe((response) => {
       this.cityList = response;
+    }, (error) => {
+      this.notificationService.warningNotification("İller getirilemedi!");
     });
   }
 
@@ -47,23 +63,32 @@ export class CityComponent implements OnInit {
   add() {
     if (this.addForm.valid) {
       let city = Object.assign({}, this.addForm.value);
-
       this.cityService.add(city).subscribe((response) => {
+        this.addForm.reset();
         this.getList();
+        this.notificationService.successNotification("Yeni İl başarıyla eklendi", "Başarılı!");
+      }, (error) => {
+        this.notificationService.errorNotification(error.statusText, "Başarısız!");
       });
+    } else {
+      this.showError = true;
+      this.notificationService.warningNotification("Lütfen formu düzgün doldurun!");
     }
   }
 
   update() {
     if (this.updateForm.valid) {
       let city: UpdateCityDto = Object.assign({}, this.updateForm.value);
-      console.log(city);
-
-
       this.cityService.update(city).subscribe((response) => {
         this.closeUpdateModal();
         this.getList();
-      })
+        this.notificationService.successNotification("İl başarıyla güncellendi!");
+      }, (error) => {
+        this.notificationService.errorNotification(error.statusText);
+      });
+    } else {
+      this.showError = true;
+      this.notificationService.warningNotification("Formu adam akıllı doldur!");
     }
   }
 
@@ -97,12 +122,12 @@ export class CityComponent implements OnInit {
   }
 
   createAddForm() {
-    this.title = "Yeni İl Ekle"
     this.addForm = new FormGroup({
-      plateCode: new FormControl(0, [
+      plateCode: new FormControl("", [
         Validators.required,
         Validators.min(1),
-        Validators.max(81)
+        Validators.max(81),
+        CustomValidators.numericValidator
       ]),
       name: new FormControl("", [
         Validators.required,
@@ -118,7 +143,8 @@ export class CityComponent implements OnInit {
       plateCode: new FormControl(city.plateCode, [
         Validators.required,
         Validators.min(1),
-        Validators.max(81)
+        Validators.max(81),
+        CustomValidators.numericValidator
       ]),
       name: new FormControl(city.name, [
         Validators.required,

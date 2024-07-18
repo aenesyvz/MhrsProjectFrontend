@@ -1,0 +1,19 @@
+<section class="home">
+    <div class="home__container container grid">
+        <div class="home__content">
+            <div class="cards">
+                <app-patient-home-card backgroundColor="#444444" title="Aşı Randevusu Al"
+                    imageUrl="assets/icons/asi-icon.png"
+                    description="Aşı Randevusu alabilirsiniz."></app-patient-home-card>
+                <app-patient-home-card backgroundColor="#358481" title="Aile Hekimi Randevusu Al"
+                    imageUrl="assets/icons/doctor.png"
+                    description="Bağlı bulunduğunuz Aile Hekiminizden randevu alabilirsiniz."></app-patient-home-card>
+                <app-patient-home-card backgroundColor="#800000" title="Hastane Randevusu Al"
+                    imageUrl="assets/icons/hospital.png"
+                    description="Hastanede bulunan kliniklerden randevu alabilirsiniz."></app-patient-home-card>
+            </div>
+            <app-patient-home-tabbar></app-patient-home-tabbar>
+        </div>
+        <app-patient-nearby-hospital></app-patient-nearby-hospital>
+    </div>
+</section>

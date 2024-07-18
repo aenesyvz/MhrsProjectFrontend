@@ -2,8 +2,6 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Swiper } from 'swiper';
 import { register } from 'swiper/element/bundle';
 
-
-
 @Component({
   selector: 'app-home-banner',
   templateUrl: './home-banner.component.html',
@@ -16,13 +14,13 @@ export class HomeBannerComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     register();
     const swiper = new Swiper('.swiper-container', {
-      loop: true, // Döngüyü etkinleştirin
+      loop: true,
       autoplay: {
-        delay: 3000, // Otomatik geçiş süresi (3 saniye)
-        disableOnInteraction: false // Kullanıcı etkileşiminde otomatik geçişi devre dışı bırakma
+        delay: 3000,
+        disableOnInteraction: false
       },
       pagination: {
-        clickable: true // Sayfalama düğmelerini tıklanabilir yapın
+        clickable: true
       },
       injectStyles: [
         `

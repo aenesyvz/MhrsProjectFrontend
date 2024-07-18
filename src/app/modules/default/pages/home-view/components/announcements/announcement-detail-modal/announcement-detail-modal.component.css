@@ -1,0 +1,56 @@
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(10, 10, 10, 0.357);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+    margin-top: 4rem;
+    padding: 30px;
+    background-color: #fff;
+    width: 70%;
+    display: grid;
+    gap: 2rem;
+    height: fit-content;
+    border-radius: 1rem;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.modal-title-divider {
+    position: relative;
+}
+
+
+.modal-title-divider::after {
+    content: "";
+    width: calc(100% + 60px);
+    position: absolute;
+    left: -30px;
+    bottom: -0.5rem;
+    height: 2px;
+    background-color: black;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.close-button {
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    padding: 1rem;
+}
+
+.close-button i {
+    font-size: 2rem;
+}

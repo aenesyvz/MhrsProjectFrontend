@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PageRequest } from 'src/app/core/utilities/pageRequest';
-import { GetByIdDiseaseDto, GetListDiseaseDto } from 'src/app/models/DTOs/diseaseDto';
+import { SelectTagItemModel } from 'src/app/core/utilities/selectTagItemModel';
+import { GetListDiseaseDto } from 'src/app/models/DTOs/diseaseDto';
 import { GetListPolyclinicDto } from 'src/app/models/DTOs/polyclinicDtos';
 import { DiseaseService } from 'src/app/services/disease.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { PolyclinicService } from 'src/app/services/polyclinic.service';
 
 @Component({
@@ -15,7 +17,7 @@ export class DiseaseComponent implements OnInit {
   diseaseList: GetListDiseaseDto[];
   disease: GetListDiseaseDto;
 
-  polyclinicList: GetListPolyclinicDto[];
+  polyclinicList: SelectTagItemModel[] = [];
 
   addForm: FormGroup;
   updateForm: FormGroup;
@@ -33,9 +35,20 @@ export class DiseaseComponent implements OnInit {
 
   showError: boolean = false;
 
+  polyclinicIdValidationSchema: Record<string, string> = {
+    required: "Lütfen bir polikinik seçiniz",
+  }
+
+  diseaseNameValidationSchema: Record<string, string> = {
+    required: "Lütfen hastalık adını giriniz",
+    minlength: "En az üç karakter olmalıdır"
+  }
+
+
   constructor(
     private diseaseService: DiseaseService,
-    private polyclinicServcie: PolyclinicService
+    private polyclinicService: PolyclinicService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -46,13 +59,18 @@ export class DiseaseComponent implements OnInit {
   getList() {
     this.diseaseService.getList(this.pageRequest).subscribe((response) => {
       this.diseaseList = response.items;
-
-    })
+    }, (error) => {
+      this.notificationService.warningNotification("Hastalıklar getirilemedi!");
+    });
   }
 
   getListPolyclinic() {
-    this.polyclinicServcie.getList({ pageIndex: 0, pageSize: 1000 }).subscribe((response) => {
-      this.polyclinicList = response.items;
+    this.polyclinicService.getList({ pageIndex: 0, pageSize: 1000 }).subscribe((response) => {
+      response.items.forEach(element => {
+        this.polyclinicList.push({ key: element.name, value: element.id });
+      })
+    }, (error) => {
+      this.notificationService.warningNotification("Polikinikler getirilemedi!");
     })
   }
 
@@ -65,34 +83,42 @@ export class DiseaseComponent implements OnInit {
   add() {
     if (this.addForm.valid) {
       let disease = Object.assign({}, this.addForm.value);
-
       this.diseaseService.add(disease).subscribe((response) => {
         this.closeAddModal();
         this.getList();
+        this.notificationService.successNotification("Hastalık Eklendi!");
+      }, (error) => {
+        this.notificationService.errorNotification(error.statusText, "Hastalık Eklenemedi!");
       });
+    } else {
+      this.showError = true;
+      this.notificationService.errorNotification("Ağğğanın formu düzgün doldursana");
     }
   }
 
   update() {
     if (this.updateForm.valid) {
       let disease = Object.assign({}, this.updateForm.value);
-      console.log(disease);
-
       this.diseaseService.update(disease).subscribe((response) => {
         this.closeUpdateModal();
         this.getList();
+        this.notificationService.successNotification("Hastalık güncellendi!");
+      }, (error) => {
+        this.notificationService.errorNotification(error.statusText, "Hastalık Güncellenemedi!");
       })
     }
     else {
-      console.log(this.updateForm.value);
-
-
+      this.showError = true;
+      this.notificationService.warningNotification("Formu düzgün doldurun");
     }
   }
 
   delete(id: number) {
     this.diseaseService.delete(id).subscribe((response) => {
       this.getList();
+      this.notificationService.successNotification("Hastalık silindi!")
+    }, (error) => {
+      this.notificationService.errorNotification(error.statusText, "Hastalık silinemedi!");
     })
   }
 
@@ -128,8 +154,6 @@ export class DiseaseComponent implements OnInit {
         Validators.minLength(3)
       ])
     })
-
-
   }
 
   createUpdateForm() {

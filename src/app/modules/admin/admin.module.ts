@@ -25,6 +25,9 @@ import { AddHospitalComponent } from './components/hospital/add-hospital/add-hos
 import { AdminFormSelectComponent } from './commons/admin-form-select/admin-form-select.component';
 import { UpdateHospitalComponent } from './components/hospital/update-hospital/update-hospital.component';
 import { UpdateMedicineComponent } from './components/medicine/update-medicine/update-medicine.component';
+import { AdminFilterDropdownComponent } from './commons/admin-filter-dropdown/admin-filter-dropdown.component';
+import { AdminPaginationComponent } from './commons/admin-pagination/admin-pagination.component';
+import { AdminPaginationSizeComponent } from './commons/admin-pagination/admin-pagination-size/admin-pagination-size.component';
 
 
 
@@ -55,6 +58,9 @@ import { UpdateMedicineComponent } from './components/medicine/update-medicine/u
     AdminFormSelectComponent,
     UpdateHospitalComponent,
     UpdateMedicineComponent,
+    AdminFilterDropdownComponent,
+    AdminPaginationComponent,
+    AdminPaginationSizeComponent,
 
 
   ],

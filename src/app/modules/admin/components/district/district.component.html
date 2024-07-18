@@ -30,25 +30,20 @@
 <app-add-and-update-modal *ngIf="isOpenAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
     title="Yeni İlçe Ekle" buttonText="Ekle">
     <form class="form" [formGroup]="addForm">
-        <div class="input__group">
-            <label for="" class="label">İlçe Adı</label>
-            <input type="text" class="input" formControlName="name" [ngModel]="name">
-        </div>
+        <app-admin-form-input [showError]="showError" [errorMessage]="districtNameValidationSchema"
+            [control]="$any(addForm.controls['name'])" inputId="diseaseName" placeholder="Lütfen  İlçe Adını Giriniz"
+            label="İlçe Adı"></app-admin-form-input>
     </form>
 </app-add-and-update-modal>
 
 <app-add-and-update-modal *ngIf="isOpenUpdateModal" (modalClosed)="closeUpdateModal()" (operation)="update()"
     title="Yeni İlçe Güncelle" buttonText="Güncelle">
     <form class="form" [formGroup]="updateForm">
-        <div class="input__group">
-            <label for="" class="label">İl</label>
-            <select class="input" formControlName="cityId">
-                <option *ngFor="let city of cityList" [value]="city.id">{{city.name}}</option>
-            </select>
-        </div>
-        <div class="input__group">
-            <label for="" class="label">İlçe Adı</label>
-            <input type="text" class="input" formControlName="name">
-        </div>
+        <app-admin-form-select [showError]="showError" [items]="cityList" [errorMessage]="cityIdValidationSchema"
+            [control]="$any(updateForm.controls['cityId'])" inputId="cityId" placeholder="Lütfen İl Seçin" label="İl">
+        </app-admin-form-select>
+        <app-admin-form-input [showError]="showError" [errorMessage]="districtNameValidationSchema"
+            [control]="$any(updateForm.controls['name'])" inputId="diseaseName" placeholder="Lütfen  İlçe Adını Giriniz"
+            label="İlçe Adı"></app-admin-form-input>
     </form>
 </app-add-and-update-modal>

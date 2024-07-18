@@ -1,0 +1,11 @@
+.footer {
+    background-color: rgb(241, 238, 238);
+    padding-block: 2rem 1rem;
+    font-size: 1.15rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+.footer span {
+    color: hsl(190, 64%, 22%);
+}

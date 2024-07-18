@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { RegisterViewComponent } from './pages/register-view/register-view.component';
 import { DefaultViewSelectComponent } from './components/default-view-select/default-view-select.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AnnouncementDetailModalComponent } from './pages/home-view/components/announcements/announcement-detail-modal/announcement-detail-modal.component';
 
 
 
@@ -37,7 +38,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     LanguagesDropdownComponent,
     DefaultViewInputComponent,
     RegisterViewComponent,
-    DefaultViewSelectComponent
+    DefaultViewSelectComponent,
+    AnnouncementDetailModalComponent
   ],
   imports: [
     CommonModule,

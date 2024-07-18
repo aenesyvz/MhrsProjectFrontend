@@ -1,0 +1,32 @@
+.pagination__content {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.current__page {
+    background-color: hsl(190, 64%, 22%);
+    color: white;
+    font-size: 20px;
+    padding: .75rem 1rem;
+    border-radius: 1rem;
+    height: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    height: 2rem;
+    width: 2rem;
+    background-color: hsl(190, 64%, 22%);
+    color: white;
+    font-size: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}

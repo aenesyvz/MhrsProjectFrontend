@@ -34,30 +34,24 @@
     title="Yeni İl Ekle" buttonText="Ekle">
 
     <form class="form" [formGroup]="addForm">
-        <div class="input__group">
-            <label for="" class="label">Plaka Kodu</label>
-            <input type="text" class="input" formControlName="plateCode" [ngModel]="plateCode">
-        </div>
-        <div class="input__group">
-            <label for="" class="label">Adı</label>
-            <input type="text" class="input" formControlName="name" [ngModel]="name">
-        </div>
+        <app-admin-form-input [showError]="showError" [errorMessage]="plateCodeValidationSchema"
+            [control]="$any(addForm.controls['plateCode'])" inputId="plateCode"
+            placeholder="Lütfen Plaka Kodunu Giriniz" label="Plaka Kodu"></app-admin-form-input>
+        <app-admin-form-input [showError]="showError" [errorMessage]="cityNameValidationSchema"
+            [control]="$any(addForm.controls['name'])" inputId="name" placeholder="Lütfen İl Adını Giriniz"
+            label="İl Adı"></app-admin-form-input>
+
     </form>
 </app-add-and-update-modal>
 
 <app-add-and-update-modal *ngIf="isOpenUpdateModal" (modalClosed)="closeUpdateModal()" (operation)="update()"
     title="Şehir Güncelle" buttonText="Güncelle">
     <form class="form" [formGroup]="updateForm">
-        <!-- <app-form-input label="Plaka Kodu" formControlName="plateCode" [ngModel]="city.plateCode"></app-form-input> -->
-        <div class="input__group">
-            <label for="" class="label">Plaka Kodu</label>
-            <input type="text" class="input" formControlName="plateCode" [ngModel]="city.plateCode">
-        </div>
-        <div class="input__group">
-            <label for="" class="label">Adı</label>
-            <input type="text" class="input" formControlName="name" [ngModel]="city.name">
-        </div>
+        <app-admin-form-input [showError]="showError" [errorMessage]="plateCodeValidationSchema"
+            [control]="$any(updateForm.controls['plateCode'])" inputId="plateCode"
+            placeholder="Lütfen Plaka Kodunu Giriniz" label="Plaka Kodu"></app-admin-form-input>
+        <app-admin-form-input [showError]="showError" [errorMessage]="cityNameValidationSchema"
+            [control]="$any(updateForm.controls['name'])" inputId="cityName" placeholder="Lütfen İl Adını Giriniz"
+            label="İl Adı"></app-admin-form-input>
     </form>
 </app-add-and-update-modal>
-
-//Düzeltilecek

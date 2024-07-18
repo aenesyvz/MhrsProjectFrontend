@@ -1,4 +1,43 @@
-<section class="login ">
+<section class="login">
+    <div class="login__container container grid">
+        <div class="login__header">
+            <img src="/assets/images/mhrsLogo.png" alt="" class="circle__logo">
+            <img src="/assets/images/mhrsLogo2.svg" alt="" class="other__logo">
+            <app-languages-dropdown class="languages-dropdown"></app-languages-dropdown>
+        </div>
+    </div>
+    <div class="login__content">
+        <div class="login__bg"></div>
+        <div class="login__outer">
+            <div class="form__outer">
+                <h3 class="form__title">Hoş Geldiniz!</h3>
+                <div class="login__form">
+                    <form class="form" [formGroup]="loginForm">
+                        <app-default-view-input [showError]="showError" [control]="$any(loginForm.controls['email'])"
+                            icon="ri-user-fill" [errorMessage]="errorMessageForEmail" inputId="email"
+                            placeholder="Lütfen Email Giriniz">
+                        </app-default-view-input>
+                        <app-default-view-input [showError]="showError" [errorMessage]="errorMessageForPassword"
+                            icon="ri-lock-2-fill" [control]="$any(loginForm.controls['password'])" inputId="password"
+                            placeholder="Parola">
+                        </app-default-view-input>
+                        <div class="button__group">
+                            <button (click)="login()" class="login__btn button">Giriş</button>
+                            <button class="login-with-edevlet__btn button">e-Devlet İle Giriş</button>
+                            <button routerLink="/Register" class="register__btn button">Üye Ol</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="login__footer">
+                    Soru ve sorunlarınız için <span>mhrsyardim@saglik.gov.tr</span> adresimizi kullanarak bize
+                    ulaşabilirsiniz.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="login ">
     <div class="login__container container grid">
         <div class="login__content">
             <div class="login__content-header">
@@ -34,4 +73,4 @@
                 alt="" class="login__img">
         </div>
     </div>
-</section>
+</section> -->

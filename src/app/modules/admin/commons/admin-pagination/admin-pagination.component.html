@@ -1,0 +1,13 @@
+<div class="pagination__container">
+    <div class="pagination__content">
+        <div class="prev__arrow arrow" (click)="decrementPageIndex()">
+            <i class="ri-arrow-left-s-line"></i>
+        </div>
+
+        <div class="current__page">{{pageIndex + 1}}</div>
+        <div class="next__arrow arrow" (click)="incrementPageIndex()">
+            <i class="ri-arrow-right-s-line"></i>
+        </div>
+
+    </div>
+</div>

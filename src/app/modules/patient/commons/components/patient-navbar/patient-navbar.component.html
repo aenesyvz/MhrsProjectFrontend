@@ -1,0 +1,147 @@
+<header class="header" id="header">
+    <nav class="nav container">
+        <div class="nav__logo">
+            <img class="nav__logo1" src="/assets/images/mhrsLogo.png" alt="">
+            <img class="nav__logo2" src="/assets/images/mhrsLogo2.svg" alt="">
+        </div>
+        <div class="nav__content">
+            <img class="search__icon" src="/assets/icons/search-line.svg" alt="">
+            <div class="search__group">
+                <input type="text" class="search__input"
+                    placeholder="Randevu aradığınız hastane, klinik veya hekim bilgisini yazınız">
+                <img class="search__img" src="/assets/icons/search-line.svg" alt="">
+            </div>
+            <div class="icon__border">
+                <img src="/assets/icons/group-fill.svg" alt="" class="settings__icon">
+                <div class="item__info">
+                    <div class="custom__arrow"></div>
+                    Yetkili Olduklarım
+                </div>
+            </div>
+            <div class="icon__border">
+                <img src="/assets/icons/settings-3-line.svg" alt="" class="settings__icon">
+                <div class="item__info">
+                    <div class="custom__arrow"></div>
+                    Ayarlar
+                </div>
+            </div>
+
+            <div class="user__dropdown">
+                <img class="user__icon" src="assets/icons/user-line.svg" alt="">
+                <div class="dropdown__header">ALPER ENES YAVUZ</div>
+                <img class="dropdown__arrow" src="/assets/icons/arrow-down-white.svg" alt="" />
+            </div>
+
+            <img class="menu__icon" (click)="openMenu()" id="toggle-menu" src="/assets/icons/menu-fill.svg" alt="">
+            <div class="nav__menu" id="nav-menu">
+                <img class="nav__close" (click)="closeMenu()" id="nav-close" src="/assets/icons/close-line.svg" alt="">
+                <div class="patient__info">
+                    <img class="user__icon" src="assets/icons/user-line.svg" alt="">
+                    Alper Enes Yavuz
+                </div>
+                <div class="divider"></div>
+                <ul class="nav__list">
+                    <li class="nav__item mainmenu">
+                        <a class="nav__link" (click)="toggleSubMenu(1)">
+                            <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                            Hesap Bilgileri <img class="arrowdown__icon" src="assets/icons/arrow-down-s-line.svg"
+                                alt="">
+                        </a>
+                        <ul class="submenu" [ngClass]="{'show-submenu':this.openSubMenu.includes(1)}">
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    Kimlik Bilgileri </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    İletişim Bilgileri </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    Parola İşlemleri </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    Kullanım Geçmişi </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    İleri Seviye Güvenlik İşlemleri </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    Bilgilendirme Tercihleri </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    Güvenlik İşlemleri </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    Yetkili Olduklarım </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="nav__item mainmenu">
+                        <a class="nav__link" (click)="toggleSubMenu(2)">
+                            <img src="assets/icons/calendar-check-line.svg" alt="" class="link__logo">
+                            Randevu Bilgileri <img class="arrowdown__icon"
+                                [ngClass]="{'show-submenu':this.openSubMenu.includes(2)}"
+                                src="assets/icons/arrow-down-s-line.svg" alt="">
+                        </a>
+                        <ul class="submenu" [ngClass]="{'show-submenu':this.openSubMenu.includes(2)}">
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    Randevu Geçmişi </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    Randevu Talepleri </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="" class="submenu__link">
+                                    <img class="link__logo" src="assets/icons/account-pin-box-line.svg" alt="">
+                                    En Yakın Hastane </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <div class="nav__item"><a href="" class="nav__link">
+                            <img src="assets/icons/star-line.svg" alt="" class="link__logo">
+                            Favorilerim</a></div>
+                    <div class="nav__item"><a href="" class="nav__link">
+                            <img src="assets/icons/question-line.svg" alt="" class="link__logo">
+                            Sıkça Sorulan Sorular</a></div>
+                    <div class="nav__item"><a href="" class="nav__link">
+                            <img src="assets/icons/book-open-line.svg" alt="" class="link__logo">
+                            Aydınlatma Metni</a></div>
+                    <div class="nav__item"><a href="" class="nav__link">
+                            <img src="assets/icons/survey-line.svg" alt="" class="link__logo">
+                            Soru Görüş ve Önerileriniz</a></div>
+                    <div class="nav__item"><a href="" class="nav__link">Neyim Var?</a></div>
+                    <div class="nav__item"><a href="" class="nav__link">
+                            <img src="assets/icons/group-fill.svg" alt="" class="link__logo">
+                            Yetkili Olduklarım</a></div>
+                    <div class="nav__item"><a href="" class="nav__link">
+                            <img src="assets/icons/settings-3-line.svg" alt="" class="link__logo">
+                            Ayarlar</a></div>
+                </ul>
+                <button class="exit__btn" (click)="exit()"><img class="logout__icon"
+                        src="assets/icons/logout-circle-r-line.svg" alt="">
+                    Çıkış</button>
+
+            </div>
+        </div>
+    </nav>
+</header>

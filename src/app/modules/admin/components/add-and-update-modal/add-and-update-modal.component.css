@@ -105,7 +105,7 @@
 
 .form {
     display: grid;
-    row-gap: 1.5rem;
+    row-gap: 2rem;
 }
 
 .error__message {

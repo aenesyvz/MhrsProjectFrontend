@@ -29,6 +29,9 @@
     border-radius: .5rem;
     color: rgb(23, 86, 66);
     transition: background .3s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .announcement_item:hover {

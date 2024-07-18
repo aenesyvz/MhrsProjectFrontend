@@ -1,24 +1,30 @@
-<section class="login ">
-    <div class="login__container container grid">
-        <div class="login__content">
-            <div class="login__content-header">
-                <img src="/assets/images/mhrsLogo.png" alt="" class="circle__logo">
-                <img src="/assets/images/mhrsLogo2.svg" alt="" class="other__logo">
-            </div>
-
-            <div class="login__form">
-                <div class="form__data">
-                    <h3 class="form__title">Üye Ol</h3>
-                    <p class="form__description">Tüm alanların doldurulması zorunludur.</p>
+<header class="register__header">
+    <div class="login__content-header">
+        <img src="/assets/images/mhrsLogo.png" alt="" class="circle__logo">
+        <img src="/assets/images/mhrsLogo2.svg" alt="" class="other__logo">
+    </div>
+</header>
+<section class="register">
+    <div class="register__container container grid">
+        <div class="register__bg"></div>
+        <div class="register__content">
+            <div class="steps">
+                <div class="step step-1">1</div>
+                <div class="step__progress">
+                    <div class="bar"></div>
                 </div>
-                <div class="form__outer">
-                    <div class="form__group">
-                        <form class="form form1" [formGroup]="registerFormGroup1">
+                <div class="step step-2">2</div>
+            </div>
+            <div class="register__form-outer">
+                <div class="steps__form">
+                    <div class="step__form form-1">
+                        <h3 class="form__title">Üye Ol</h3>
+                        <form class="form" [formGroup]="registerFormGroup1">
                             <app-default-view-input [showError]="showError"
-                                [control]="$any(registerFormGroup1.controls['natioanlityId'])" icon="ri-user-fill"
+                                [control]="$any(registerFormGroup1.controls['nationalityNumber'])" icon="ri-user-fill"
                                 [errorMessage]="validationSchema.errorMessageForNatioanlityId" inputId="natioanlityId"
-                                placeholder="Lütfen T.C Kimlik No Giriniz1"
-                                (input)="inputControl.onInputChangeAcceptLimitedNumeric($event, $any(registerFormGroup1.controls['natioanlityId']))">
+                                placeholder="Lütfen T.C Kimlik No Giriniz"
+                                (input)="inputControl.onInputChangeAcceptLimitedNumeric($event, $any(registerFormGroup1.controls['nationalityNumber']))">
                             </app-default-view-input>
 
                             <app-default-view-input [showError]="showError"
@@ -43,7 +49,7 @@
 
                             <app-default-view-input [showError]="showError"
                                 [errorMessage]="validationSchema.errorMessageForDateOfBirth" icon="ri-lock-2-fill"
-                                [control]="$any(registerFormGroup1.controls['dayOfBirth'])" inputId="dayOfBirth"
+                                [control]="$any(registerFormGroup1.controls['dateOfBirth'])" inputId="dateOfBirth"
                                 placeholder="Doğum Tarihi" type="date">
                             </app-default-view-input>
 
@@ -61,8 +67,10 @@
                             </div>
 
                         </form>
-
-                        <form class="form form2" [formGroup]="registerFormGroup2">
+                    </div>
+                    <div class="step__form form-2">
+                        <h3 class="form__title">Dikkatli Doldur!</h3>
+                        <form class="form" [formGroup]="registerFormGroup2">
                             <app-default-view-input [showError]="showError"
                                 [control]="$any(registerFormGroup2.controls['email'])" icon="ri-user-fill"
                                 [errorMessage]="validationSchema.errorMessageForEmail" inputId="email"
@@ -72,43 +80,35 @@
                             <app-default-view-input [showError]="showError"
                                 [errorMessage]="validationSchema.errorMessageForPhoneNumber" icon="ri-lock-2-fill"
                                 [control]="$any(registerFormGroup2.controls['phoneNumber'])" inputId="phoneNumber"
-                                placeholder="İsim"
-                                (input)="inputControl.onInputChangeAcceptLimitedNumeric($event, $any(registerFormGroup2.controls['phoneNumber']))">
+                                placeholder="(___) ___ __ __"
+                                (input)="inputControl.onInputPhoneNumberChange($event, $any(registerFormGroup2.controls['phoneNumber']))">
                             </app-default-view-input>
 
                             <app-default-view-input [showError]="showError"
                                 [control]="$any(registerFormGroup2.controls['password'])" icon="ri-user-fill"
                                 [errorMessage]="validationSchema.errorMessageForPhoneNumber" inputId="password"
-                                placeholder="Şifre">
+                                placeholder="Şifre" type="password">
                             </app-default-view-input>
-
+                            <!-- 
                             <app-default-view-input [showError]="showError"
                                 [errorMessage]="validationSchema.errorMessageForPhoneNumber" icon="ri-lock-2-fill"
                                 [control]="$any(registerFormGroup2.controls['confirmPassword'])"
                                 inputId="confirmPassword" placeholder="Şifre Tekrarı" type="password">
-                            </app-default-view-input>
-
+                            </app-default-view-input> -->
 
 
                             <div class="button__group">
-                                <button class="login__btn button">Kaydol > </button>
-
+                                <button class="login__btn button" (click)="register()">Kaydol > </button>
                             </div>
 
                         </form>
                     </div>
                 </div>
-
-
-
             </div>
-        </div>
-        <div class="login__cover">
-            <img src="https://static.wixstatic.com/media/8d1167_c80eaaf466ca4302b50a155ece44571c~mv2.png/v1/fill/w_410,h_376,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/MHRS.png"
-                alt="" class="login__img">
         </div>
     </div>
 </section>
+
 
 <app-generic-modal (closeModal)="closeUsageCondititionModal()" *ngIf="openModal">
     <div class="modal__data">

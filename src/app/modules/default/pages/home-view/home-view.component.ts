@@ -16,10 +16,11 @@ export class HomeViewComponent implements OnInit {
   onWindowScroll() {
     this.shouldShowScrollButton = window.scrollY >= 350;
   }
+
   scrollToTop() {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // Bu, yavaş kaydırmayı sağlar
+      behavior: 'smooth'
     });
   }
 }

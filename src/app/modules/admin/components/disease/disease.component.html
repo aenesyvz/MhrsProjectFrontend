@@ -29,16 +29,13 @@
 <app-add-and-update-modal *ngIf="isOpenAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
     title="Yeni Hastalık Ekle" buttonText="Ekle">
     <form class="form" [formGroup]="addForm">
-        <div class="input__group">
-            <label for="" class="label">Polikinik</label>
-            <select name="" id="" class="input" formControlName="polyclinicId" [ngModel]="polyclinicId">
-                <option *ngFor="let polyclinic of polyclinicList" [value]="polyclinic.id">{{polyclinic.name}}</option>
-            </select>
-        </div>
-        <div class="input__group">
-            <label for="" class="label">Hastalık Adı</label>
-            <input type="text" class="input" formControlName="name" [ngModel]="name">
-        </div>
+        <app-admin-form-select [showError]="showError" [items]="polyclinicList"
+            [errorMessage]="polyclinicIdValidationSchema" [control]="$any(addForm.controls['polyclinicId'])"
+            inputId="polyclinicId" placeholder="Lütfen Polikinik Seçin" label="Polikinik">
+        </app-admin-form-select>
+        <app-admin-form-input [showError]="showError" [errorMessage]="diseaseNameValidationSchema"
+            [control]="$any(addForm.controls['name'])" inputId="diseaseName"
+            placeholder="Lütfen  Hastalık Adını Giriniz" label="Hastalık Adı"></app-admin-form-input>
     </form>
 </app-add-and-update-modal>
 
@@ -46,15 +43,12 @@
 <app-add-and-update-modal *ngIf="isOpenUpdateModal" title="Hastalık Güncelle" buttonText="Güncelle"
     (modalClosed)="closeUpdateModal()" (operation)="update()">
     <form class="form" [formGroup]="updateForm">
-        <div class="input__group">
-            <label for="" class="label">Polikinik</label>
-            <select name="" id="" class="input" formControlName="polyclinicId" [ngModel]="disease.polyclinicId">
-                <option *ngFor="let polyclinic of polyclinicList" [value]="polyclinic.id">{{polyclinic.name}}</option>
-            </select>
-        </div>
-        <div class="input__group">
-            <label for="" class="label">Hastalık Adı</label>
-            <input type="text" class="input" formControlName="name" [ngModel]="disease.name">
-        </div>
+        <app-admin-form-select [showError]="showError" [items]="polyclinicList"
+            [errorMessage]="polyclinicIdValidationSchema" [control]="$any(updateForm.controls['polyclinicId'])"
+            inputId="polyclinicId" placeholder="Lütfen Polikinik Seçin" label="Polikinik">
+        </app-admin-form-select>
+        <app-admin-form-input [showError]="showError" [errorMessage]="diseaseNameValidationSchema"
+            [control]="$any(updateForm.controls['name'])" inputId="diseaseName"
+            placeholder="Lütfen  Hastalık Adını Giriniz" label="Hastalık Adı"></app-admin-form-input>
     </form>
 </app-add-and-update-modal>

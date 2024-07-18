@@ -4,6 +4,6 @@ export interface ListResponseWithPaginationModel<T> {
     size?: number;
     count?: number;
     pages?: number;
-    hasPrevious?: number;
-    hasNext?: number;
+    hasPrevious?: boolean;
+    hasNext?: boolean;
 }

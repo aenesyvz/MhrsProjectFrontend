@@ -1,17 +1,19 @@
 <section class="polyclinics section">
     <div class="polyclinics__container container grid">
         <app-table-header title="Polikilinikler"></app-table-header>
+        <app-admin-pagination-size (changePageSize)="changePageSize($event)"
+            [pageSize]="pageRequest.pageSize"></app-admin-pagination-size>
         <table class="content-table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Polikilinik Adı</th>
-                    <th>işlemler</th>
+                    <th scope="col">Poliklinik Adı</th>
+                    <th>İşlemler</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of polyclinicsList;index as i">
-                    <th scope="row">{{pageIndex * pageSize + i+1}}</th>
+                    <th scope="row">{{this.pageRequest.pageIndex * this.pageRequest.pageSize + i+1}}</th>
                     <td>{{item.name}}</td>
                     <td class="btns">
                         <button type="button" class="btn update" (click)="openUpdateModal(item)">Güncelle</button>
@@ -20,18 +22,20 @@
                 </tr>
             </tbody>
         </table>
-
-        <button class="btn add" (click)="openAddModal()">Ekle</button>
+        <div class="table__footer">
+            <button class="btn add" (click)="openAddModal()">Ekle</button>
+            <app-admin-pagination [pageIndex]="pageRequest.pageIndex" [hasNext]="hasNext" [hasPrevious]="hasPrevious"
+                (pageIndexChange)="changePageIndex($event)"></app-admin-pagination>
+        </div>
     </div>
 </section>
 
 <app-add-and-update-modal *ngIf="isAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
     title="Polikilinik Ekle" buttonText="Ekle">
     <form class="form" [formGroup]="addForm">
-        <div class="input__group">
-            <label for="" class="label" formControlName="name" [ngModel]="name">Adı</label>
-            <input type="text" class="input">
-        </div>
+        <app-admin-form-input [showError]="showError" [errorMessage]="polyclinicNameValidationSchema"
+            [control]="$any(addForm.controls['name'])" inputId="polyclinicName"
+            placeholder="Lütfen Poliklinik Adını Giriniz" label="Poliklinik Adı"></app-admin-form-input>
     </form>
 
 </app-add-and-update-modal>
@@ -39,10 +43,9 @@
 <app-add-and-update-modal *ngIf="isUpdateModal" (modalClosed)="closeUpdateModal()" (operation)="update()"
     title="Polikilinik Güncelle" buttonText="Güncelle">
     <form class="form" [formGroup]="updateForm">
-        <div class="input__group">
-            <label for="" class="label">Adı</label>
-            <input type="text" class="input" formControlName="name" [ngModel]="polyclinic.name">
-        </div>
+        <app-admin-form-input [showError]="showError" [errorMessage]="polyclinicNameValidationSchema"
+            [control]="$any(updateForm.controls['name'])" inputId="polyclinicName"
+            placeholder="Lütfen Poliklinik Adını Giriniz" label="Poliklinik Adı"></app-admin-form-input>
     </form>
 </app-add-and-update-modal>
 

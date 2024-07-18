@@ -1,10 +1,6 @@
 <section class="appointment__time section">
     <div class="appoinment__time__container container grid">
         <app-table-header title="Randevu Zamanları"></app-table-header>
-        <!-- <div class="section__data">
-            <i class="ri-menu-line"></i>
-            <h3 class="section__title">Randevu Zamanları</h3>
-        </div> -->
         <table class="content-table">
             <thead>
                 <tr>
@@ -31,52 +27,27 @@
 <app-add-and-update-modal *ngIf="isOpenAddModal" (modalClosed)="closeAddModal()" (operation)="add()"
     title="Randevu Ekle" buttonText="Ekle">
     <form [formGroup]="addForm" class="form">
-        <div class="input__group">
-            <label for="" class="label">Saat</label>
-            <input type="text" formControlName="hour" [ngModel]="hour" class="input" min="9" max="17">
-            <span class="error__message"
-                *ngIf="(this.addForm.get('hour')!.touched || this.showError ) && this.addForm.get('hour')!.hasError('required')">
-                Lazım
-            </span>
-        </div>
-        <div class="input__group">
-            <label for="" class="label">Dakika</label>
-            <input type="text" class="input" min="0" max="59" formControlName="minute" [ngModel]="minute">
-            <span class="error__message"
-                *ngIf="(this.addForm.get('minute')!.touched ||this.showError ) && this.addForm.get('minute')!.hasError('required')">
-                Lazım
-            </span>
-            <span class="error__message"
-                *ngIf="(this.addForm.get('minute')!.touched ||this.showError ) && this.addForm.get('minute')!.hasError('numericValidator')">
-                Hatalı
-            </span>
+        <app-admin-form-input [showError]="showError" [errorMessage]="hourValidationSchema"
+            [control]="$any(addForm.controls['hour'])" inputId="hour" placeholder="Lütfen Randevu Saatini Giriniz"
+            label="Saat"></app-admin-form-input>
 
-        </div>
+        <app-admin-form-input [showError]="showError" [errorMessage]="minuteValidationSchema"
+            [control]="$any(addForm.controls['minute'])" inputId="minute"
+            placeholder="Lütfen Randevu Dakikasını Giriniz" label="Dakika"></app-admin-form-input>
     </form>
-
 </app-add-and-update-modal>
 
 
 <app-add-and-update-modal *ngIf="isOpenUpdateModal" (modalClosed)="closeUpdateModal()" (operation)="update()"
     title="Randevu Güncelle" buttonText="Güncelle">
     <form [formGroup]="updateForm" class="form">
-        <div class="input__group">
-            <label for="" class="label">Saat</label>
-            <input type="text" formControlName="hour" class="input" min="9" max="17">
-        </div>
-        <div class="input__group">
-            <label for="" class="label">Dakika</label>
-            <input type="text" class="input" min="0" max="59" formControlName="minute">
-            <span class="error__message"
-                *ngIf="(this.updateForm.get('minute')!.touched ||this.showError ) && this.updateForm.get('minute')!.hasError('required')">
-                Lazım
-            </span>
-            <span class="error__message"
-                *ngIf="(this.updateForm.get('minute')!.touched ||this.showError ) && this.updateForm.get('minute')!.hasError('numericValidator')">
-                Hatalı
-            </span>
+        <app-admin-form-input [showError]="showError" [errorMessage]="hourValidationSchema"
+            [control]="$any(updateForm.controls['hour'])" inputId="hour" placeholder="Lütfen Randevu Saatini Giriniz"
+            label="Saat"></app-admin-form-input>
 
-        </div>
+        <app-admin-form-input [showError]="showError" [errorMessage]="minuteValidationSchema"
+            [control]="$any(updateForm.controls['minute'])" inputId="minute"
+            placeholder="Lütfen Randevu Dakikasını Giriniz" label="Dakika"></app-admin-form-input>
 
     </form>
 </app-add-and-update-modal>

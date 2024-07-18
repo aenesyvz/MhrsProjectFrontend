@@ -122,10 +122,9 @@
         </div>
         <div class="nav__menu" id="nav-menu" [ngClass]="{'show-menu': isOpenMenu}">
             <ul class="nav__list">
-                <a href="javascript:void(0);" (click)="closeMenu()">
-                    <app-home-header-button title="Giriş Yap" backgroundColor="login__btn"></app-home-header-button>
-                </a>
-
+                <a href="javascript:void(0);" (click)="closeMenu()"></a>
+                <app-home-header-button title="Giriş Yap" backgroundColor="login__btn"
+                    redirectToUrl="Login"></app-home-header-button>
                 <app-home-header-button title="Harita" backgroundColor="map__btn"
                     imgUrl="/assets/images/haritaIcon2.svg"></app-home-header-button>
                 <app-home-header-button title="" backgroundColor="e-nabiz__btn"

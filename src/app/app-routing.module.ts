@@ -21,6 +21,9 @@ import { HospitalComponent } from './modules/admin/components/hospital/hospital.
 import { AddHospitalComponent } from './modules/admin/components/hospital/add-hospital/add-hospital.component';
 import { UpdateHospitalComponent } from './modules/admin/components/hospital/update-hospital/update-hospital.component';
 import { UpdateMedicineComponent } from './modules/admin/components/medicine/update-medicine/update-medicine.component';
+import { PatientLayoutComponent } from './modules/patient/patient-layout/patient-layout.component';
+import { PatientHomeComponent } from './modules/patient/pages/patient-home/patient-home.component';
+import { PatientAppointmentComponent } from './modules/patient/patient-appointment/patient-appointment.component';
 
 const routes: Routes = [
   {
@@ -52,6 +55,14 @@ const routes: Routes = [
       { path: "Hospitals/Update", component: UpdateHospitalComponent },
       { path: "OperationClaims", component: OperationClaimComponent },
       { path: "UserOperationClaim", component: UserOperationClaimComponent }
+    ]
+  },
+  {
+    path: "Patient",
+    component: PatientLayoutComponent,
+    children: [
+      { path: "Home", component: PatientHomeComponent },
+      { path: "Appointment", component: PatientAppointmentComponent }
     ]
   },
   { path: "**", component: NotFoundComponent }

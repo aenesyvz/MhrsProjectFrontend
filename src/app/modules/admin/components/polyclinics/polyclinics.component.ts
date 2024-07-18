@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PageRequest } from 'src/app/core/utilities/pageRequest';
 import { GetByIdPolyclinicDto, GetListPolyclinicDto } from 'src/app/models/DTOs/polyclinicDtos';
+import { NotificationService } from 'src/app/services/notification.service';
 import { PolyclinicService } from 'src/app/services/polyclinic.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { PolyclinicService } from 'src/app/services/polyclinic.service';
   styleUrls: ['./polyclinics.component.css', "../../admin-common.css", "../add-and-update-modal/add-and-update-modal.component.css"]
 })
 export class PolyclinicsComponent implements OnInit {
-  polyclinicsList: GetListPolyclinicDto[];
+  polyclinicsList: GetListPolyclinicDto[] = [];
   polyclinic: GetByIdPolyclinicDto;
 
   addForm: FormGroup;
@@ -19,9 +20,12 @@ export class PolyclinicsComponent implements OnInit {
   id: string;
   name: string;
 
+  hasPrevious: boolean = false;
+  hasNext: boolean = false;
   pageIndex: number = 0;
   pageSize: number = 10;
   pageRequest: PageRequest = { pageIndex: this.pageIndex, pageSize: this.pageSize };
+
 
   isAddModal: boolean = false;
   isUpdateModal: boolean = false;
@@ -29,8 +33,14 @@ export class PolyclinicsComponent implements OnInit {
 
   showError: boolean = false;
 
+  polyclinicNameValidationSchema: Record<string, string> = {
+    required: "Lütfen polikinik adını giriniz",
+    minlength: "En az 3 karakterden oluşmalı"
+  }
+
   constructor(
-    private polyclinicService: PolyclinicService
+    private polyclinicService: PolyclinicService,
+    private notificationService: NotificationService
   ) { }
 
 
@@ -41,8 +51,11 @@ export class PolyclinicsComponent implements OnInit {
   getList() {
     this.polyclinicService.getList(this.pageRequest).subscribe((response) => {
       this.polyclinicsList = response.items;
-
-    })
+      this.hasNext = response.hasNext || false;
+      this.hasPrevious = response.hasPrevious || false;
+    }, (error) => {
+      this.notificationService.warningNotification("Polikinikler getirilemedi!");
+    });
 
 
   }
@@ -58,9 +71,15 @@ export class PolyclinicsComponent implements OnInit {
       let polyclinic = Object.assign({}, this.addForm.value);
 
       this.polyclinicService.add(polyclinic).subscribe((response) => {
-        this.addForm.reset();
+        this.closeAddModal();
         this.getList();
+        this.notificationService.successNotification("Poliklinik eklendi!");
+      }, (error) => {
+        this.notificationService.errorNotification(error.statusText, "Poliklinik eklenemedi!");
       });
+    } else {
+      this.showError = true;
+      this.notificationService.errorNotification("Lütfen formu düzgün doldurun!");
     }
   }
 
@@ -71,7 +90,13 @@ export class PolyclinicsComponent implements OnInit {
       this.polyclinicService.update(polyclinic).subscribe((response) => {
         this.closeUpdateModal();
         this.getList();
+        this.notificationService.successNotification("Poliklinik güncellendi!");
+      }, (error) => {
+        this.notificationService.errorNotification(error.statusText, "Poliklinik güncellenemedi!");
       });
+    } else {
+      this.showError = true;
+      this.notificationService.errorNotification("Lütfen formu düzgün doldurun!");
     }
   }
 
@@ -79,13 +104,16 @@ export class PolyclinicsComponent implements OnInit {
     this.polyclinicService.delete(id).subscribe((response) => {
       this.getList();
       this.closeDeleteModal();
+    }, (error) => {
+      this.notificationService.errorNotification(error.statusText, "Poliklinik silinemedi!")
     })
   }
 
 
   openAddModal() {
-    this.isAddModal = true;
     this.createAddForm();
+    this.isAddModal = true;
+
   }
 
   closeAddModal() {
@@ -117,15 +145,26 @@ export class PolyclinicsComponent implements OnInit {
 
   createAddForm() {
     this.addForm = new FormGroup({
-      name: new FormControl("", Validators.required)
+      name: new FormControl("", [Validators.required, Validators.minLength(3)])
     })
   }
 
   createUpdateForm() {
     this.updateForm = new FormGroup({
       id: new FormControl(this.polyclinic.id, Validators.required),
-      name: new FormControl(this.polyclinic.name, Validators.required)
+      name: new FormControl(this.polyclinic.name, [Validators.required, Validators.minLength(3)])
     })
+  }
+
+
+  changePageIndex(index: number) {
+    this.pageRequest.pageIndex = index;
+    this.getList();
+  }
+
+  changePageSize(size: number) {
+    this.pageRequest.pageSize = size;
+    this.getList();
   }
 
 }

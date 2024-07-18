@@ -3,7 +3,7 @@
     <div class="input__content">
         <select class="input" [id]="inputId" [formControl]="control"
             [ngClass]="{'error__input':control.errors && displayErrors()}">
-            <option value="-1">Seçiniz</option>
+            <option value="">Seçiniz</option>
             <option *ngFor="let item of items" [value]="item.value">{{item.key}}</option>
         </select>
     </div>

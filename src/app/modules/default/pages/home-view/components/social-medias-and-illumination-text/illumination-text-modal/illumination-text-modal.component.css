@@ -1,5 +1,6 @@
 .modal__content {
     position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -14,10 +15,8 @@
     position: relative;
     width: 70%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-    height: 100vh;
-    overflow-y: scroll;
+    background-color: #FFFFFF;
     z-index: 200;
-
 }
 
 .modal__header {
@@ -33,10 +32,11 @@
 }
 
 .modal__body {
-    background-color: #FFFFFF;
     padding: 5rem;
     display: grid;
     row-gap: .5rem;
+    height: 80vh;
+    overflow-y: scroll;
 }
 
 .modal__body-group {
@@ -58,6 +58,7 @@
     border-radius: 35px;
     border: none;
     color: #FFFFFF;
+
 }
 
 
